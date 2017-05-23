@@ -8,6 +8,8 @@ services:
       - "10080:3000"
     volumes:
       - /var/gogs:/data
+    environment:
+      USER: git
     restart: always
     depends_on:
       - mysql-container
