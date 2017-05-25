@@ -21,6 +21,7 @@ services:
     volumes:
       - /var/www/vhosts/devgiants.fr/projects.devgiants.fr/files/config:/usr/src/redmine/config
       - /var/www/vhosts/devgiants.fr/projects.devgiants.fr/files/public:/usr/src/redmine/public
+      - /var/www/vhosts/devgiants.fr/projects.devgiants.fr/files/files:/usr/src/redmine/files
     environment:
       REDMINE_DB_MYSQL: mysql-container
       REDMINE_DB_PASSWORD: 53za05179wiB96q
