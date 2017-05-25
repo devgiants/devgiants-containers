@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Make backup
+docker exec -i -t devgiants1containers_gogs_1 /app/gogs/gogs backup --target /tmp --archive-name gogs.zip
+
+# Build file name
+now=$(date +"%Y_%m_%d")
+file="/var/www/vhosts/devgiants.fr/git.devgiants.fr/backup/gogs_$now.zip"
+
+# Copy file
+docker cp devgiants1containers_gogs_1:/tmp/gogs.zip $file
+
+# Remove everything from /tmp dir
+docker exec -i -t devgiants1containers_gogs_1 rm -rf /tmp/gogs*
+
+# Keep only 3 in destination folder
+ls -drt /var/www/vhosts/devgiants.fr/git.devgiants.fr/backup/* | head -n-3 | xargs rm
