@@ -1,19 +1,6 @@
 version: '3'
 
 services:
-  gogs:
-    image: gogs/gogs
-    ports:
-      - "10022:22"
-      - "10080:3000"
-    volumes:
-      - /var/gogs:/data
-    environment:
-      USER: git
-    restart: always
-    depends_on:
-      - mysql-container
-
   redmine:
     image: redmine
     ports:
@@ -35,18 +22,6 @@ services:
       - /var/www/vhosts/devgiants.fr/database:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 53za05179wiB96q
-    restart: always
-
-
-  mysql-safran-nc:
-    image: mysql:5.5.43
-    volumes:
-      - /var/www/vhosts/safran-de-saint-amand.fr/database:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: iXk2~66o
-    networks:
-      fixednet:
-        ipv4_address: 172.25.0.101
     restart: always
 
 networks:
